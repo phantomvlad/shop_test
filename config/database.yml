@@ -1,0 +1,9 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  user: phantomvlad
+  password: 1234
+
+development:
+  <<: *default
+  database: bonus
