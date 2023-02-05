@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :shops, through: :cards
   has_many :purchases
 
+  validates_associated :cards, uniqueness: true
   validates :email,
             presence: true,
             uniqueness: true,
