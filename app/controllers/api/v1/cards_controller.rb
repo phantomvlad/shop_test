@@ -19,7 +19,7 @@ module Api
       private
 
       def params_require_filer
-        if params.include?(:stats)
+        if params&.require(:stats)[:bonuses] == "sum"
           @flag_sum = true
         end
 
