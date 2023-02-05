@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_05_170609) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_05_222712) do
+  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
@@ -20,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_05_170609) do
     t.bigint "user_id"
     t.bigint "shop_id"
     t.index ["shop_id"], name: "index_cards_on_shop_id"
+    t.index ["user_id", "shop_id"], name: "index_cards_on_user_id_and_shop_id", unique: true
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
