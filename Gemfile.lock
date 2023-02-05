@@ -93,7 +93,12 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jquery (0.0.1)
     jsonapi-renderer (0.2.2)
+    jsonapi-resources (0.10.7)
+      activerecord (>= 4.1)
+      concurrent-ruby
+      railties (>= 4.1)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -167,10 +172,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers (~> 0.10.0)
   debug
   faker
   jbuilder
+  jquery
+  jsonapi-resources
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.2)
