@@ -1,21 +1,20 @@
 json.data do
-  json.id @user.id
+  json.id @shop.id
   json.type @table_name
   json.attributes do
-    json.email @user.email
-    json.negative_balance @user.negative_balance
+    json.name @shop.name
   end
 
   json.relationships do
     json.cards do
       json.links do
-        json.related link_rel("cards", "user_id", @user.id)
+        json.related link_rel("cards", "shop_id", @shop.id)
       end
     end
 
-    json.shops do
+    json.users do
       json.links do
-        json.related link_rel("shops", "user_id", @user.id)
+        json.related link_rel("users", "shop_id", @shop.id)
       end
     end
   end

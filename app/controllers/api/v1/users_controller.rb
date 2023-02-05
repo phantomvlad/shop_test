@@ -6,7 +6,7 @@ module Api
       before_action :table_name
 
       def index
-        @data = User.all
+        params_require_filer
       end
 
       def show
@@ -44,6 +44,18 @@ module Api
 
       def user_params_update
         params.require(:data).permit(:id, :type, {attributes: [ :email, :negative_balance]} )
+      end
+
+      def params_require_filer
+        if params.include?(:filter)
+          if params.require(:filter).include?(:shop_id)
+            @data = User.includes(:cards).where(cards: Card.all.where(shop_id: params.require(:filter)[:shop_id]))
+          else
+            render json: { error: 'no filter' }
+          end
+        else
+          @data = User.includes(:cards)
+        end
       end
     end
   end

@@ -9,13 +9,13 @@ json.data @data do |user|
   json.relationships do
     json.cards do
       json.links do
-        json.related link_rel("cards", user.id)
+        json.related link_rel("cards", "user_id", user.id)
       end
     end
 
     json.shops do
       json.links do
-        json.related link_rel("shops", user.id)
+        json.related link_rel("shops", "user_id", user.id)
       end
     end
   end

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :show, :create, :update]
       resources :cards, only: [:index, :show]
+      resources :shops, only: [:show, :update, :index, :create] do
+        post 'buy', to: 'purchases#buy'
+      end
     end
   end
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
