@@ -49,7 +49,7 @@ module Api
       def params_require_filer
         if params.include?(:filter)
           if params.require(:filter).include?(:shop_id)
-            @data = User.includes(:cards).where(cards: Card.includes(:shop).where(shop_id: params.require(:filter)[:shop_id]))
+            @data = User.where(cards: Card.includes(:shop).where(shop_id: params.require(:filter)[:shop_id]))
           else
             render json: { error: 'no filter' }, status: :not_found
           end
