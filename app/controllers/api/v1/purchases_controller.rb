@@ -6,7 +6,12 @@ module Api
 
         if @purchase.save
           @card = Card.where(shop_id: @purchase.shop_id, user_id: @purchase.user_id).first
-          bonus_program
+          if @card == nil
+            @amount_due = @purchase.amount
+            @no_card = true
+          else
+            bonus_program
+          end
         else
           respond_with_errors(@user, "422")
         end

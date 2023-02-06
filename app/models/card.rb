@@ -3,4 +3,5 @@ class Card < ApplicationRecord
   belongs_to :shop
 
   validates :user, uniqueness: { scope: :shop }
+
 end

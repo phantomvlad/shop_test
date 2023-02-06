@@ -29,7 +29,7 @@ module Api
           elsif params.require(:filter).include?(:shop_id)
             @data = Card.includes(:shop).where(shop_id: params.require(:filter)[:shop_id])
           else
-            render json: { error: 'no filter' }
+            render json: { error: 'no filter' }, status: :not_found
           end
         else
           @data = Card.includes(:user)

@@ -1,4 +1,4 @@
 class Purchase < ApplicationRecord
-  validates :amount, presence: true
-  validates :user_id, presence: true
+  validates :amount, comparison: { greater_than: 0, message: "is required" }
+  validates :user_id, presence: { message: "is required" }
 end

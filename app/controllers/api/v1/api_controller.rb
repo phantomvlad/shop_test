@@ -6,7 +6,7 @@ module Api
       def respond_with_errors(object, status_code)
         @object = object
         @status_code = status_code
-        render 'error'
+        render 'error', status: :unprocessable_entity
       end
     end
   end

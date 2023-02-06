@@ -14,7 +14,7 @@ module Api
         @shop = Shop.create(shop_params[:attributes])
 
         if @shop.save
-          render "api/v1/shops/show"
+          render "api/v1/shops/show", status: :created
         else
           respond_with_errors(@shop, "422")
         end
@@ -44,7 +44,7 @@ module Api
           if params.require(:filter).include?(:user_id)
             @data = Shop.includes(:cards).where(cards: Card.includes(:user).where(user_id: params.require(:filter)[:user_id]))
           else
-            render json: { error: 'no filter' }
+            render json: { error: 'no filter' }, status: :not_found
           end
         else
           @data = Shop.includes(:users)

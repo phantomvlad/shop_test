@@ -1,5 +1,5 @@
 json.data @data do |card|
-  json.id card.id
+  json.id "#{card.id}"
   json.type @table_name
   json.attributes do
     json.bonuses card.bonuses
@@ -28,6 +28,9 @@ if @flag_sum
       end
     end
   end
+else
+  @meta = {}
+  json.meta @meta
 end
 
 

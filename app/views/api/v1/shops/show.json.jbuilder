@@ -1,5 +1,5 @@
 json.data do
-  json.id @shop.id
+  json.id "#{@shop.id}"
   json.type @table_name
   json.attributes do
     json.name @shop.name
@@ -20,6 +20,7 @@ json.data do
   end
 end
 
-json.meta do
-  json.meta
-end
+@meta = {}
+json.meta @meta
+
+

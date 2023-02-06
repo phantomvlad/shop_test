@@ -1,5 +1,5 @@
 json.data do
-  json.id @card.id
+  json.id "#{@card.id}"
   json.type @table_name
   json.attributes do
     json.bonuses @card.bonuses
@@ -20,6 +20,5 @@ json.data do
   end
 end
 
-json.meta do
-
-end
+@meta = {}
+json.meta @meta

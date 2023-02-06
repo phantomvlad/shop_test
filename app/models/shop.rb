@@ -4,4 +4,5 @@ class Shop < ApplicationRecord
   has_many :purchases
 
   validates_associated :cards, uniqueness: true
+  validates :name, uniqueness: true, presence: { message: "is required" }
 end

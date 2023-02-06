@@ -1,5 +1,5 @@
 json.data do
-  json.id @user.id
+  json.id "#{@user.id}"
   json.type @table_name
   json.attributes do
     json.email @user.email
@@ -21,6 +21,5 @@ json.data do
   end
 end
 
-json.meta do
-  json.meta
-end
+@meta = {}
+json.meta @meta
