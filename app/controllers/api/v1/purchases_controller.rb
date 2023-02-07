@@ -6,9 +6,9 @@ module Api
 
         if @purchase.save
           @card = Card.where(shop_id: @purchase.shop_id, user_id: @purchase.user_id).first
-          if @card == nil
-            @card = Card.create(bonuses: 0, user_id: @purchase.user_id, shop_id: @purchase.shop_id)
-          end
+
+          @card = Card.create(bonuses: 0, user_id: @purchase.user_id, shop_id: @purchase.shop_id) if @card == nil
+
 
           bonus_program
         else
