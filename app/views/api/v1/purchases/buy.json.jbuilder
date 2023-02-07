@@ -6,9 +6,5 @@ json.data do
     json.amount_due @amount_due
   end
 
-  if @no_card
-    json.remaining_bonus 0
-  else
-    json.remaining_bonus @card.bonuses
-  end
+  json.remaining_bonus @card.bonuses
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   validates_associated :cards, uniqueness: true
   validates :email,
-            presence: { message: "is required" },
+            presence: true,
             uniqueness: true,
             format: { with: URI::MailTo::EMAIL_REGEXP }
 end

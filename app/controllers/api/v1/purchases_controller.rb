@@ -7,11 +7,10 @@ module Api
         if @purchase.save
           @card = Card.where(shop_id: @purchase.shop_id, user_id: @purchase.user_id).first
           if @card == nil
-            @amount_due = @purchase.amount
-            @no_card = true
-          else
-            bonus_program
+            @card = Card.create(bonuses: 0, user_id: @purchase.user_id, shop_id: @purchase.shop_id)
           end
+
+          bonus_program
         else
           respond_with_errors(@user, "422")
         end
@@ -37,7 +36,9 @@ module Api
             @amount_due = 0
           else
             @amount_due = @purchase.amount - sum_bonuses_user
-            @card.update(bonuses: @card.bonuses - sum_bonuses_user)
+            bonuses_plus = 0
+            bonuses_plus = (@amount_due*0.01).floor if @amount_due >= 100
+            @card.update(bonuses: @card.bonuses - sum_bonuses_user + bonuses_plus)
           end
 
         else
