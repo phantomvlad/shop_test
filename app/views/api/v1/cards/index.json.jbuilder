@@ -12,7 +12,7 @@ json.data @data do |card|
       end
     end
 
-    json.shops do
+    json.shop do
       json.links do
         json.related link_rel_no_filter("shops", card.shop_id)
       end
