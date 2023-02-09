@@ -1,5 +1,5 @@
 class Purchase < ApplicationRecord
-  validates :amount, presence: true
+  validates :amount, presence: { message: "is required" }
   #validates :user_id, presence: { message: "is required" }
   #validates :shop_id, presence: { message: "is required" }
   validate :user_and_shop
