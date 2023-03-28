@@ -1,0 +1,1 @@
+curl --header  "Content-Type: application/vnd.api+json" --request POST --data '{"amount": "11100","use_bonuses": false,"user_id": "1"}' http://localhost:3000/api/v1/shops/1/buy curl --header  "Content-Type: application/vnd.api+json" --request POST --data '{"amount": "13600","use_bonuses": false,"user_id": "1"}' http://localhost:3000/api/v1/shops/1/buy
